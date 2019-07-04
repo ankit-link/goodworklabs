@@ -13,16 +13,15 @@ class Flexi extends React.Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
+    debugger;
     this.setState({
       [name]: value
     });
   }
 
-,
+  handleSubmit(event) {
     if(this.state) {
         console.log(this.state)
-        this.props.setFilter()
     }
 
       event.preventDefault();
@@ -30,7 +29,6 @@ class Flexi extends React.Component {
 
   render() {
   console.log("State" , this.state)
-  console.log("Props" , this.props)
   const config = this.props.config.items;
   const formItems = [];
   config.forEach(item => {

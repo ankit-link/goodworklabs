@@ -2,47 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Flexi from './Flexi';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import formReducer from './reducers/formreducer'
-import FlexiContainer from './containers/formcontainer'
+import * as serviceWorker from './serviceWorker';
+
 const flexiconfig =  {
                     items: [
 
                         {
                             name: "person_name",
-                            label: "firstname",
-                            type: "TextField"
-                        },
-
-                        {
-                            name: "person_lasname",
-                            label: "lastname",
+                            label: "Person's Name",
                             type: "TextField"
                         },
 
                         {
                             name: "states",
-                            label: "state",
+                            label: "Person's state",
                             type: "DropDown",
                             values: ["Maharashtra", "Kerala", "Tamil Nadu"]
-                        },
-
-                        {
-                            name: "Gender",
-                            label: "gender",
-                            type: "DropDown",
-                            values: ["Male","female","other"]
                         }
                     ]
 };
 
-const store = createStore(formReducer)
+ReactDOM.render(<Flexi config={flexiconfig}/>, document.getElementById('root'));
 
-window.store = store;
-
-ReactDOM.render(
-<Provider store={store}>
-    <FlexiContainer config={flexiconfig}/>
-  </Provider>, document.getElementById('root'));
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
